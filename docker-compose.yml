@@ -1,0 +1,56 @@
+services:
+  sqledge:
+    image: mcr.microsoft.com/azure-sql-edge:latest
+    container_name: sqledge
+    hostname: sqledge
+    environment:
+      ACCEPT_EULA: ${ACCEPT_EULA}
+      MSSQL_SA_PASSWORD: ${MSSQL_SA_PASSWORD}
+    ports:
+      - "1433:1433"
+    networks:
+      - sb-network
+    healthcheck:
+      test: /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P "$${MSSQL_SA_PASSWORD}" -Q "SELECT 1" -b -o /dev/null
+      interval: 10s
+      timeout: 10s
+      retries: 12
+      start_period: 10s
+
+  servicebus-emulator:
+    image: mcr.microsoft.com/azure-messaging/servicebus-emulator:latest
+    container_name: servicebus-emulator
+    hostname: servicebus-emulator
+    depends_on:
+      sqledge:
+        condition: service_healthy
+    environment:
+      SQL_SERVER: sqledge
+      MSSQL_SA_PASSWORD: ${MSSQL_SA_PASSWORD}
+      ACCEPT_EULA: ${ACCEPT_EULA}
+    ports:
+      - "5672:5672"
+      - "5300:5300"
+      - "8080:8080"
+    volumes:
+      - ./config.json:/ServiceBus_Emulator/ConfigFiles/Config.json:ro
+    networks:
+      - sb-network
+
+  sbam-proxy:
+    build: ./sbam-proxy
+    container_name: sbam-proxy
+    hostname: sbam-proxy
+    ports:
+      - "443:443"
+      - "5671:5671"
+    volumes:
+      - ./config.json:/app/config.json:ro
+    environment:
+      EMULATOR_CONFIG_PATH: /app/config.json
+    networks:
+      - sb-network
+
+networks:
+  sb-network:
+    driver: bridge

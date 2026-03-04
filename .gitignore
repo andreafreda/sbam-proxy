@@ -1,0 +1,37 @@
+# .NET
+bin/
+obj/
+*.user
+*.userosscache
+*.sln.docstates
+
+# Visual Studio
+.vs/
+[Tt]emp/
+[Vv]isualStudio.pro/
+
+# Visual Studio Code
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# Docker
+.env
+*.pfx
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# Java (in case of future additions)
+target/
+*.class
+*.jar
+*.war
+*.ear
+.settings/
+.classpath
+.project
+.factorypath

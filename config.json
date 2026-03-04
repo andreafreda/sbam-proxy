@@ -1,0 +1,62 @@
+{
+    "UserConfig": {
+        "Namespaces": [
+            {
+                "Name": "sbemulatorns",
+                "Topics": [
+                    {
+                        "Name": "orders-topic",
+                        "Properties": {
+                            "RequiresSession": true
+                        },
+                        "Subscriptions": [
+                            {
+                                "Name": "orders-subscription",
+                                "Properties": {
+                                    "RequiresSession": true
+                                }
+                            },
+                            {
+                                "Name": "orders-subscription-nosession",
+                                "Properties": {
+                                    "RequiresSession": false
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "Name": "test-topic-nosession",
+                        "Properties": {
+                            "RequiresSession": false
+                        },
+                        "Subscriptions": [
+                            {
+                                "Name": "test-subscription-nosession",
+                                "Properties": {
+                                    "RequiresSession": false
+                                }
+                            }
+                        ]
+                    }
+                ],
+                "Queues": [
+                    {
+                        "Name": "orders-queue",
+                        "Properties": {
+                            "RequiresSession": true
+                        }
+                    },
+                    {
+                        "Name": "test-queue",
+                        "Properties": {
+                            "RequiresSession": false
+                        }
+                    }
+                ]
+            }
+        ],
+        "Logging": {
+            "Type": "File"
+        }
+    }
+}
