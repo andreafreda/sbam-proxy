@@ -40,7 +40,16 @@ Prima di avviare, definisci i tuoi Topic, Subscription e Code nel file `config.j
 - **Code**: Definisci code indipendenti nell'array `Queues`.
 - **Sessioni**: Imposta `"RequiresSession": true` per abilitare la messaggistica basata su sessioni.
 
-### 2. Prerequisiti
+### 2. Variabili d'Ambiente (.env)
+Crea un file `.env` nella cartella root (questo file è ignorato da Git). Deve contenere:
+```env
+ACCEPT_EULA=Y
+MSSQL_SA_PASSWORD=SbamProxy123!
+```
+> [!IMPORTANT]
+> La password deve essere lunga almeno 8 caratteri e contenere maiuscole, minuscole, numeri e simboli per rispettare i requisiti di SQL Server.
+
+### 3. Prerequisiti
 - **Docker Desktop** installato e attivo.
 - **Service Bus Explorer** (Client desktop).
 

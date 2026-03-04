@@ -40,7 +40,16 @@ Before launching, define your Topics, Subscriptions, and Queues in the `config.j
 - **Queues**: Define standalone queues in the `Queues` array.
 - **Sessions**: Set `"RequiresSession": true` to enable session-based messaging.
 
-### 2. Prerequisites
+### 2. Environment Variables (.env)
+Create a `.env` file in the root directory (this file is ignored by Git). It must contain:
+```env
+ACCEPT_EULA=Y
+MSSQL_SA_PASSWORD=SbamProxy123!
+```
+> [!IMPORTANT]
+> The password must be at least 8 characters long and contain uppercase, lowercase, numbers, and symbols to meet SQL Server requirements.
+
+### 3. Prerequisites
 - **Docker Desktop** installed and running.
 - **Service Bus Explorer** (Desktop client).
 
