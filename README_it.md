@@ -52,6 +52,10 @@ MSSQL_SA_PASSWORD=SbamProxy123!
 ### 3. Prerequisiti
 - **Docker Desktop** installato e attivo.
 - **Service Bus Explorer** (Client desktop).
+  - *Se non lo hai, puoi installarlo rapidamente tramite winget:*
+    ```powershell
+    winget install PaoloSalvatori.ServiceBusExplorer
+    ```
 
 ### 3. Configurazione Certificato (Windows)
 Per permettere a Service Bus Explorer di connettersi in modo sicuro via HTTPS/SSL, è necessario considerare attendibile il certificato locale:
