@@ -48,6 +48,8 @@ services:
       - ./config.json:/app/config.json:ro
     environment:
       EMULATOR_CONFIG_PATH: /app/config.json
+      SQL_HOST: sqledge
+      SQL_PASS: ${MSSQL_SA_PASSWORD}
     networks:
       - sb-network
 
