@@ -12,7 +12,7 @@ public class CountsFetcher
     public CountsFetcher()
     {
         var sqlHost = Environment.GetEnvironmentVariable("SQL_HOST") ?? "sqledge";
-        var sqlPass = "YourStrong!Passw0rd";
+        var sqlPass = Environment.GetEnvironmentVariable("SQL_PASS") ?? "YourStrong!Passw0rd";
         _connectionString = $"Server={sqlHost},1433;Database={DbName};User Id=sa;Password={sqlPass};TrustServerCertificate=True;Timeout=5;";
         Console.WriteLine($"[CountsFetcher] Ready to query sqledge as sa.");
     }
